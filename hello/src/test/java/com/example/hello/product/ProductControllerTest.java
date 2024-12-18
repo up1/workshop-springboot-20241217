@@ -16,11 +16,21 @@ class ProductControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Test
     @DisplayName("ทำการทดสอบดึงข้อมูลรายละเอียด product  ด้วย id=1 สำเร็จ")
     void case01() {
+        // Arrange
+        Product p1 = new Product();
+        p1.setId(1);
+        p1.setName("XXX");
+        productRepository.save(p1);
+        // Act
         ProductResponse actualResult = restTemplate.getForObject(
                 "/product/1", ProductResponse.class);
+        // Assert
         assertEquals(1, actualResult.getId());
         assertEquals("XXX", actualResult.getName());
     }
