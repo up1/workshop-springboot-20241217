@@ -16,7 +16,8 @@ public class UserGateway {
     }
 
     public UserResponse getUserDetail(int id) {
-        String url = "https://jsonplaceholder.typicode.com/users/" + id;
+//        String url = "https://jsonplaceholder.typicode.com/users/" + id;
+        String url = "http://localhost:9999/users/" + id;
         try {
             return restTemplate.getForObject(url, UserResponse.class);
         } catch (RestClientException e) {
