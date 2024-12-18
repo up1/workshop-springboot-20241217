@@ -11,17 +11,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class HelloApplication {
 
-	@Autowired
-	ProductRepository productRepository;
-
-	@PostConstruct
-	void initialData() {
-		Product p100 = new Product();
-		p100.setId(100);
-		p100.setName("Product 100");
-		productRepository.save(p100);
-	}
-
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context
 				= SpringApplication.run(HelloApplication.class, args);
