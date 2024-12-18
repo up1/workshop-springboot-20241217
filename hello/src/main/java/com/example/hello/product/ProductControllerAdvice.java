@@ -17,4 +17,11 @@ public class ProductControllerAdvice {
         return new ResponseEntity<ErrorResponse>(response, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(exception = ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductNotFound(Exception e) {
+        ErrorResponse response = new ErrorResponse();
+        response.setMessage(e.getMessage());
+        return new ResponseEntity<ErrorResponse>(response, HttpStatus.NOT_FOUND);
+    }
+
 }
