@@ -15,6 +15,16 @@ class ProductServiceTest {
     ProductService productService;
 
     @Test
+    @DisplayName("Junit 5 Product id=1000 not found in database")
+    void case04() {
+        Exception exception = assertThrows(ProductNotFoundException.class, () -> {
+            productService.get(1000);
+        });
+        assertEquals("Product id=1000 not found", exception.getMessage());
+
+    }
+
+    @Test
     @DisplayName("Product id=1000 not found in database")
     void case03() {
         // Act
